@@ -1,34 +1,34 @@
 import { useState } from "react";
 
 export default function EmojiPicker(): JSX.Element {
-    const [currentEmoji, queueRerenderCurrentEmoji] = useState("");
-    const [previousEmoji, queueRerenderPreviousEmoji] = useState("");
+    const [currentEmoji, queueRerenderCurrentEmoji] = useState<string>("");
+    const [previousEmojis, queueRerenderPreviousEmojis] = useState<string[]>([]);
 
     const handleEmojiChangeClock = () => {
-        queueRerenderPreviousEmoji(currentEmoji);
+        queueRerenderPreviousEmojis([...previousEmojis, "⏰"]);
         queueRerenderCurrentEmoji("⏰");
     }
     const handleEmojiChangeBed = () => {
-        queueRerenderPreviousEmoji(currentEmoji);
+        queueRerenderPreviousEmojis([...previousEmojis, "🛌"]);
         queueRerenderCurrentEmoji("🛌");
     }
     const handleEmojiChangeEgg = () => {
-        queueRerenderPreviousEmoji(currentEmoji);
+        queueRerenderPreviousEmojis([...previousEmojis, "🍳"]);
         queueRerenderCurrentEmoji("🍳");
     }
     const handleEmojiChangeYum = () => {
-        queueRerenderPreviousEmoji(currentEmoji);
+        queueRerenderPreviousEmojis([...previousEmojis, "😋"]);
         queueRerenderCurrentEmoji("😋");
     }
     const handleEmojiChangePlate = () => {
-        queueRerenderPreviousEmoji(currentEmoji);
+        queueRerenderPreviousEmojis([...previousEmojis, "🍽️"]);
         queueRerenderCurrentEmoji("🍽️");
     }
 
     return (
         <>
             <h3>Current Emoji: {currentEmoji}</h3>
-            <h3>Previous Emoji: {previousEmoji}</h3>
+            <h3>Previous Emoji: {previousEmojis}</h3>
 
             <button onClick={handleEmojiChangeClock}>⏰</button>
             <button onClick={handleEmojiChangeBed}>🛌</button>
